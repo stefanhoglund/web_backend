@@ -10,27 +10,7 @@ generator client {
 
 model User {
   id              Int                   @id @default(autoincrement())
+  username        String                @unique
   email           String                @unique
-  password        String
-  firstName       String
-  lastName        String
-  dob             DateTime
-  active          Boolean               @default(false)
-  activationCode  Int                   @default(111066)
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
-  preferences     ShoppingPreference[]
 }
 
-model ShoppingPreference {
-  id          Int       @id @default(autoincrement())
-  name        String    @unique
-  users       User[]
-}
-
-model PasswordRequest {
-  id          Int           @id @default(autoincrement())
-  resetKey    String    
-  email       String
-  createdAt   DateTime      @default(now()) 
-}
